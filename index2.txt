@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Valentine's Day ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ff4e50, #fc913a);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+h1 {
+    font-size: 2.8rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+p {
+    font-size: 1.2rem;
+    margin-top: 20px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    background: white;
+    color: #ff4e50;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #ff4e50;
+    color: white;
+    transform: scale(1.1);
+}
+
+.hidden-message,
+.story-message {
+    display: none;
+    margin-top: 20px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.slideshow-container {
+    display: none;
+    margin-top: 30px;
+    position: relative;
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.slide {
+    display: none;
+}
+
+.slide img {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    user-select: none;
+    transform: translateY(-50%);
+}
+
+.prev { left: 0; }
+.next { right: 0; }
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes float {
+    0% {transform: translateY(0px);}
+    50% {transform: translateY(-10px);}
+    100% {transform: translateY(0px);}
+}
+
+.heart {
+    position: absolute;
+    font-size: 20px;
+    animation: rise 5s linear infinite;
+}
+
+@keyframes rise {
+    0% {transform: translateY(100vh); opacity: 1;}
+    100% {transform: translateY(-10vh); opacity: 0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Happy Valentine's Day ❤️</h1>
+
+    <p>
+        You make my life magical and full of love.
+        Every moment with you is special.
+    </p>
+
+    <button onclick="showMessage()">Click For A Surprise 💌</button>
+    <div class="hidden-message" id="surprise">
+        You are my forever ❤️
+    </div>
+
+    <button onclick="showSlideshow()">Our Memories 📸</button>
+
+    <div class="slideshow-container" id="slideshow">
+        <div class="slide">
+            <img src="photo1.jpg" alt="Memory 1">
+        </div>
+        <div class="slide">
+            <img src="photo2.jpg" alt="Memory 2">
+        </div>
+        <div class="slide">
+            <img src="photo3.jpg" alt="Memory 3">
+        </div>
+
+        <a class="prev" onclick="changeSlide(-1)">❮</a>
+        <a class="next" onclick="changeSlide(1)">❯</a>
+    </div>
+
+    <button onclick="showStory()">Our Story 📖</button>
+
+    <div class="story-message" id="story">
+        <p>
+        From the day we first talked, something felt different.  
+        What started as simple conversations slowly turned into
+        the most beautiful part of my life.
+
+        We laughed at silly things, shared secrets, 
+        supported each other through hard days,
+        and celebrated the smallest victories together.
+
+        You became my comfort, my safe place,
+        and my favorite notification.
+
+        Every memory with you is precious.
+        Every moment with you feels right.
+
+        And no matter what the future holds,
+        I promise to always stand beside you,
+        choose you,
+        and love you endlessly.
+
+        This is not just our story —
+        this is my favorite chapter of life ❤️
+        </p>
+    </div>
+
+</div>
+
+<script>
+
+function showMessage() {
+    document.getElementById("surprise").style.display = "block";
+}
+
+function showSlideshow() {
+    document.getElementById("slideshow").style.display = "block";
+    showSlides(slideIndex);
+}
+
+function showStory() {
+    document.getElementById("story").style.display = "block";
+    document.getElementById("story").scrollIntoView({ behavior: "smooth" });
+}
+
+// Floating Hearts
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 5000);
+}
+setInterval(createHeart, 300);
+
+// Slideshow Logic
+let slideIndex = 1;
+
+function changeSlide(n) {
+    showSlides(slideIndex += n);
+}
+
+function showSlides(n) {
+    let slides = document.getElementsByClassName("slide");
+    if (slides.length === 0) return;
+    if (n > slides.length) slideIndex = 1;
+    if (n < 1) slideIndex = slides.length;
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slides[slideIndex - 1].style.display = "block";
+}
+
+setInterval(() => {
+    slideIndex++;
+    showSlides(slideIndex);
+}, 3000);
+
+</script>
+
+</body>
+</html>

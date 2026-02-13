@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Valentine's Day ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ff4e50, #fc913a);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+h1 {
+    font-size: 2.8rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+p {
+    font-size: 1.2rem;
+    margin-top: 20px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    background: white;
+    color: #ff4e50;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #ff4e50;
+    color: white;
+    transform: scale(1.1);
+}
+
+.hidden-message,
+.story-message {
+    display: none;
+    margin-top: 20px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    text-align: left;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.slideshow-container {
+    display: none;
+    margin-top: 30px;
+    position: relative;
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.slide {
+    display: none;
+}
+
+.slide img {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    user-select: none;
+    transform: translateY(-50%);
+}
+
+.prev { left: 0; }
+.next { right: 0; }
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes float {
+    0% {transform: translateY(0px);}
+    50% {transform: translateY(-10px);}
+    100% {transform: translateY(0px);}
+}
+
+.heart {
+    position: absolute;
+    font-size: 20px;
+    animation: rise 5s linear infinite;
+}
+
+@keyframes rise {
+    0% {transform: translateY(100vh); opacity: 1;}
+    100% {transform: translateY(-10vh); opacity: 0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Happy Valentine's Day Minu❤️</h1>
+
+    <p>
+        I couldn’t fit everything I feel into a website, but if I had to summarize: <br>
+	You are my favorite person, my best friend, and the best part of every day. <br>
+	I love you more than this code can handle ❤️.
+    </p>
+
+    <button onclick="showMessage()">Click For A Surprise 💌</button>
+    <div class="hidden-message" id="surprise">
+        Unlimited Food Coupon unlocked for you. <br>
+	Everything will be sponsored by Monu Bhai. <br>
+	*Valid only for today, keep your expectations low.
+    </div>
+
+    <button onclick="showSlideshow()">Our Memories 📸</button>
+
+    <div class="slideshow-container" id="slideshow">
+        <div class="slide">
+            <img src="photo1.jpg" alt="Memory 1">
+        </div>
+        <div class="slide">
+            <img src="photo2.jpg" alt="Memory 2">
+        </div>
+        <div class="slide">
+            <img src="photo3.jpg" alt="Memory 3">
+        </div>
+
+        <a class="prev" onclick="changeSlide(-1)">❮</a>
+        <a class="next" onclick="changeSlide(1)">❯</a>
+    </div>
+
+    <button onclick="showStory()">Our Story 📖</button>
+
+    <div class="story-message" id="story">
+        <p>
+	To the person who changed my definition of "home," <br>
+	I built this little corner of the internet specifically for you because a simple text or a store-bought card <br>
+	didn't feel big enough to hold everything I wanted to say.<br>
+	When I look back at the last 2 years, 3 months, and 19 days, I don’t just see time passing—I see a total transformation. <br>
+	Before you, my perspective was narrow, and honestly, there were moments where I felt completely lost. <br>
+	I’ve had my share of downfalls; times when I felt like a loser, when hope seemed like a luxury I couldn't afford, <br>
+	and I was ready to give up on myself.<br>
+	But you never did.<br>
+	You were the one who picked me up when I was at my lowest. You believed in me when I had zero evidence to believe in myself. <br>
+	Every bit of progress I’ve made and wherever I am standing today, I owe it to your unwavering push and the strength you gave me. <br>
+	You didn't just support me; you rebuilt my confidence.<br>
+	I know right now you’re navigating your own hurdles in your career, and I want you to remember this: I am your permanent home base. <br>
+	Just as you were my anchor during my storms, I am standing right here in your corner. Your current struggle is just a chapter, <br>
+	not the whole book, and I have zero doubt that you will reach every height you’re aiming for.<br> <br>
+	In these 841 days, you haven’t just been my girlfriend; you’ve been my teacher. <br>
+	You changed my perspective on life and turned me into a version of myself I finally like. <br>
+	Thank you for staying, for believing, and for loving me through the "bugs" and the "crashes." <br>
+	Always,<br>
+	Monu Bhai ❤️
+        </p>
+    </div>
+
+</div>
+
+<script>
+
+function showMessage() {
+    document.getElementById("surprise").style.display = "block";
+}
+
+function showSlideshow() {
+    document.getElementById("slideshow").style.display = "block";
+    showSlides(slideIndex);
+}
+
+function showStory() {
+    document.getElementById("story").style.display = "block";
+    document.getElementById("story").scrollIntoView({ behavior: "smooth" });
+}
+
+// Floating Hearts
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 5000);
+}
+setInterval(createHeart, 300);
+
+// Slideshow Logic
+let slideIndex = 1;
+
+function changeSlide(n) {
+    showSlides(slideIndex += n);
+}
+
+function showSlides(n) {
+    let slides = document.getElementsByClassName("slide");
+    if (slides.length === 0) return;
+    if (n > slides.length) slideIndex = 1;
+    if (n < 1) slideIndex = slides.length;
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slides[slideIndex - 1].style.display = "block";
+}
+
+setInterval(() => {
+    slideIndex++;
+    showSlides(slideIndex);
+}, 3000);
+
+</script>
+
+</body>
+</html>
